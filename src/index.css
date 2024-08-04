@@ -6,12 +6,14 @@
 }
 
 *:focus {
-    outline: 3px dashed #228bec;
+    outline: 3px dashed #E9FF97;
     outline-offset: 0;
 }
 
 html {
-    font: 62.5% / 1.15 sans-serif;
+    font-size: 62.5%;
+    line-height: 1.15;
+    font-family: "Noto Sans JP", sans-serif;
 }
 
 h1,
@@ -57,10 +59,7 @@ textarea {
 button,
 input {
     overflow: visible;
-}
-
-input[type="text"] {
-    border-radius: 0;
+    border-radius: 10px;
 }
 
 body {
@@ -85,7 +84,6 @@ body {
 /* GLOBAL STYLES */
 .form-group>input[type="text"] {
     display: inline-block;
-    margin-top: 0.4rem;
 }
 
 .btn {
@@ -93,22 +91,27 @@ body {
     border: 0.2rem solid #4d4d4d;
     cursor: pointer;
     text-transform: capitalize;
+
 }
 
 .btn.toggle-btn {
     border-width: 1px;
-    border-color: #d3d3d3;
+    background-color: #FFD18E;
+    border-color: #4d4d4d;
+
 }
 
 .btn.toggle-btn[aria-pressed="true"] {
     text-decoration: underline;
-    border-color: #4d4d4d;
+    background-color: #FFA38F;
 }
 
 .btn__danger {
-    color: #fff;
-    background-color: #ca3c3c;
-    border-color: #bd2130;
+    background-color: #FF7EE2;
+}
+
+.btn__edit {
+    background-color: #E9FF97;
 }
 
 .btn__filter {
@@ -116,8 +119,11 @@ body {
 }
 
 .btn__primary {
-    color: #fff;
-    background-color: #000;
+    background-color: #FF7EE2;
+}
+
+.btn__secondary {
+    background-color: #E9FF97;
 }
 
 .btn-group {
@@ -178,7 +184,7 @@ body {
 
 /* END GLOBAL STYLES */
 .todoapp {
-    background: #fff;
+    background: linear-gradient(to right, #FF7EE2, #E9FF97);
     margin: 2rem 0 4rem 0;
     padding: 1rem;
     position: relative;
@@ -220,7 +226,7 @@ body {
 }
 
 .input__lg {
-    padding: 2rem;
+    padding: 1rem;
     border: 2px solid #000;
 }
 
@@ -290,10 +296,11 @@ body {
 .c-cb>label::before,
 .c-cb>input[type="checkbox"] {
     box-sizing: border-box;
-    top: -2px;
-    left: -2px;
+    top: 0;
+    left: 0;
     width: 44px;
     height: 44px;
+    border-radius: 10px;
 }
 
 .c-cb>input[type="checkbox"] {
@@ -320,12 +327,12 @@ body {
     content: "";
     position: absolute;
     border: 2px solid currentColor;
-    background: transparent;
+    background: #FFD18E;
 }
 
 .c-cb>input[type="checkbox"]:focus+label::before {
     border-width: 4px;
-    outline: 3px dashed #228bec;
+    outline: 3px dashed #E9FF97;
 }
 
 .c-cb>label::after {

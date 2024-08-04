@@ -18,19 +18,17 @@ export default function Todo(props) {
     const editingTemplate = (
         <form className="stack-small" onSubmit={handleSubmit}>
             <div className="form-group">
-                <label className="todo-label" htmlFor={props.id}>
-                    {props.name} を編集してるよ
-                </label>
                 <input
                     id={props.id}
                     className="todo-text"
                     type="text"
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    placeholder={props.name} />
             </div>
             <div className="btn-group">
                 <button
                     type="button"
-                    className="btn todo-cancel"
+                    className="btn btn__secondary"
                     onClick={() => setEditing(false)}>
                     <span className="visually-hidden">{props.name} の編集を</span>
                     中止する
@@ -59,13 +57,13 @@ export default function Todo(props) {
             <div className="btn-group">
                 <button
                     type="button"
-                    className="btn"
+                    className="btn btn__secondary"
                     onClick={() => setEditing(true)}>
                     編集する <span className="visually-hidden">{props.name}</span>
                 </button>
                 <button
                     type="button"
-                    className="btn btn__danger"
+                    className="btn btn__primary"
                     onClick={() => props.deleteTask(props.id)}>
                     削除する <span className="visually-hidden">{props.name}</span>
                 </button>

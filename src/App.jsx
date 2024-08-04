@@ -75,7 +75,7 @@ function App() {
         return storedTasks ? JSON.parse(storedTasks) : [];
     }
 
-    const headingText = `${taskList.length}個のタスクが残ってるよ`;
+    const headingText = `${taskList.length}個のタスクがあるよ`;
 
     return (
         <div className="todoapp stack-large">
