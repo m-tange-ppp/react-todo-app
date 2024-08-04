@@ -72,7 +72,7 @@ export default function Todo(props) {
     );
 
     return (
-        <li className="todo stack-small">
+        <li >
             {isEditing ? editingTemplate : viewTemplate}
         </li>
     );
