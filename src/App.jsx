@@ -1,10 +1,10 @@
 import Todo from "./components/Todo";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
-function App(props) {
+function App() {
     const FILTER_MAP = {
         All: () => true,
         Active: (task) => !task.completed,
@@ -12,8 +12,10 @@ function App(props) {
     };
     const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-    const [tasks, setTasks] = useState(props.tasks);
+    const [tasks, setTasks] = useState(loadTasksFromLocalStorage());
     const [filter, setFilter] = useState("All");
+
+    useEffect(saveTasksToLocalStorage, [tasks]);
 
     function toggleTaskCompleted(id) {
         const updatedTasks = tasks.map((task) => {
@@ -64,6 +66,15 @@ function App(props) {
             editTask={editTask} />
     ));
 
+    function saveTasksToLocalStorage() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function loadTasksFromLocalStorage() {
+        const storedTasks = localStorage.getItem("tasks");
+        return storedTasks ? JSON.parse(storedTasks) : [];
+    }
+
     const headingText = `${taskList.length}個のタスクが残ってるよ`;
 
     return (
@@ -84,6 +95,6 @@ function App(props) {
             </ul>
         </div>
     )
-}
+};
 
 export default App;
