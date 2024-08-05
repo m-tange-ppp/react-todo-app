@@ -3,16 +3,27 @@ import { useState } from "react";
 export default function Todo(props) {
     const [isEditing, setEditing] = useState(false);
     const [newName, setNewName] = useState("");
-
-    function handleChange(e) {
-        setNewName(e.target.value);
-    }
+    const [newDeadline, setNewDeadline] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.editTask(props.id, newName);
+        props.editTask(props.id, newName, newDeadline);
         setNewName("");
+        setNewDeadline("");
         setEditing(false);
+    }
+
+    function handleCancel() {
+        setEditing(false);
+        setNewName("");
+        setNewDeadline("");
+    }
+
+    function handleEdit() {
+        setEditing(true);
+        setNewName(props.name);
+        // deadlineがリセットされてしまう
+        setNewDeadline(props.deadline);
     }
 
     const editingTemplate = (
@@ -22,14 +33,21 @@ export default function Todo(props) {
                     id={props.id}
                     className="todo-text"
                     type="text"
-                    onChange={handleChange}
-                    placeholder={props.name} />
+                    onChange={(e) => setNewName(e.target.value)}
+                    defaultValue={newName}
+                />
+                <input
+                    type="date"
+                    className="todo-deadline"
+                    name="deadline"
+                    onChange={(e) => setNewDeadline(e.target.value)}
+                />
             </div>
             <div className="btn-group">
                 <button
                     type="button"
                     className="btn btn__secondary"
-                    onClick={() => setEditing(false)}>
+                    onClick={handleCancel}>
                     <span className="visually-hidden">{props.name} の編集を</span>
                     中止する
                 </button>
@@ -54,11 +72,14 @@ export default function Todo(props) {
                     {props.name}
                 </label>
             </div>
+            <div className="deadline">
+                {props.deadline != "" && <span>〆切 : {props.deadline}</span>}
+            </div>
             <div className="btn-group">
                 <button
                     type="button"
                     className="btn btn__secondary"
-                    onClick={() => setEditing(true)}>
+                    onClick={handleEdit}>
                     編集する <span className="visually-hidden">{props.name}</span>
                 </button>
                 <button
@@ -70,6 +91,7 @@ export default function Todo(props) {
             </div>
         </div>
     );
+
 
     return (
         <li >

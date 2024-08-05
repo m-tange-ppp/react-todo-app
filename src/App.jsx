@@ -27,8 +27,8 @@ function App() {
         setTasks(updatedTasks);
     }
 
-    function addTask(name) {
-        const newTask = { id: `todo-${nanoid()}`, name, completed: false };
+    function addTask(name, deadline) {
+        const newTask = { id: `todo-${nanoid()}`, name, completed: false, deadline: deadline };
         setTasks([...tasks, newTask]);
     }
 
@@ -37,10 +37,10 @@ function App() {
         setTasks(remainingTasks);
     }
 
-    function editTask(id, newName) {
+    function editTask(id, newName, newDeadline) {
         const editedTasks = tasks.map((task) => {
             if (id === task.id) {
-                return { ...task, name: newName };
+                return { ...task, name: newName, deadline: newDeadline };
             }
             return task;
         });
@@ -60,6 +60,7 @@ function App() {
             id={task.id}
             name={task.name}
             completed={task.completed}
+            deadline={task.deadline}
             key={task.id}
             toggleTaskCompleted={toggleTaskCompleted}
             deleteTask={deleteTask}
