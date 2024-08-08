@@ -22,7 +22,6 @@ export default function Todo(props) {
     function handleEdit() {
         setEditing(true);
         setNewName(props.name);
-        // deadlineがリセットされてしまう
         setNewDeadline(props.deadline);
     }
 
@@ -61,19 +60,19 @@ export default function Todo(props) {
 
     const viewTemplate = (
         <div className="stack-small">
-            <div className="c-cb">
-                <input
-                    id={props.id}
-                    type="checkbox"
-                    defaultChecked={props.completed}
-                    onChange={() => props.toggleTaskCompleted(props.id)}
-                />
-                <label className="todo-label" htmlFor={props.id}>
-                    {props.name}
-                </label>
-            </div>
-            <div className="deadline">
-                {props.deadline != "" && <span>〆切 : {props.deadline}</span>}
+            <div className="information">
+                <div className="c-cb">
+                    <input
+                        id={props.id}
+                        type="checkbox"
+                        defaultChecked={props.completed}
+                        onChange={() => props.toggleTaskCompleted(props.id)}
+                    />
+                    <label className="todo-label" htmlFor={props.id}>
+                        {props.name}
+                    </label>
+                </div>
+                {props.deadline != "" && <span className="deadline">{props.deadline}まで</span>}
             </div>
             <div className="btn-group">
                 <button

@@ -172,7 +172,7 @@ body {
         margin-top: 1.4rem;
     }
 
-    .stack-large>*+* {
+    .stack-large>* {
         margin-top: 2.8rem;
     }
 }
@@ -182,6 +182,7 @@ body {
 }
 
 /* END GLOBAL STYLES */
+
 .todoapp {
     background: linear-gradient(to right, #FF7EE2, #E9FF97);
     margin: 2rem 0 2rem;
@@ -255,14 +256,22 @@ body {
 }
 
 /* Todo item styles */
-.todo {
+.todo-list {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
 }
 
-.todo>* {
-    flex: 0 0 100%;
+.todo-list>* {
+    flex: 1 1 50%;
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+.todo-list::after {
+    content: "";
+    flex: 1 1 50%;
+    box-sizing: border-box;
+    align-items: stretch;
 }
 
 .todo-text {
@@ -283,7 +292,16 @@ body {
     box-shadow:
         0 2px 4px 0 rgba(0, 0, 0, 0.2),
         0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.information {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 /* CHECKBOX STYLES */
@@ -298,6 +316,7 @@ body {
     min-height: 44px;
     padding-left: 40px;
     clear: left;
+    flex: 1 1 70%;
 }
 
 .c-cb>label::before,
@@ -323,7 +342,7 @@ body {
     font-size: inherit;
     line-height: 1;
     display: inline-block;
-    padding: 14px 8px 14px;
+    padding: 0 8px 14px;
     cursor: pointer;
     touch-action: manipulation;
 }
@@ -358,4 +377,11 @@ body {
 
 .c-cb>input[type="checkbox"]:checked+label::after {
     opacity: 1;
+}
+
+/* DEADLINE STYLES */
+.deadline {
+    flex: 1 1 30%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
