@@ -7,10 +7,12 @@ export default function Todo(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.editTask(props.id, newName, newDeadline);
-        setNewName("");
-        setNewDeadline("");
-        setEditing(false);
+        if (newName.length >= 1 && newName.length <= 20) {
+            props.editTask(props.id, newName, newDeadline);
+            setNewName("");
+            setNewDeadline("");
+            setEditing(false);
+        }
     }
 
     function handleCancel() {
@@ -23,6 +25,11 @@ export default function Todo(props) {
         setEditing(true);
         setNewName(props.name);
         setNewDeadline(props.deadline);
+    }
+
+    function showDeadline(deadline) {
+        const deadlineParts = deadline.split("-")
+        return `${deadlineParts[1]}-${deadlineParts[2]}`
     }
 
     const editingTemplate = (
@@ -72,7 +79,7 @@ export default function Todo(props) {
                         {props.name}
                     </label>
                 </div>
-                {props.deadline != "" && <span className="deadline">{props.deadline}まで</span>}
+                {props.deadline != "" && <span className="deadline">{showDeadline(props.deadline)}</span>}
             </div>
             <div className="btn-group">
                 <button
@@ -90,7 +97,6 @@ export default function Todo(props) {
             </div>
         </div>
     );
-
 
     return (
         <li >

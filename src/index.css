@@ -159,16 +159,16 @@ body {
     margin-bottom: 0;
 }
 
-.stack-small>*+* {
+.stack-small>* {
     margin-top: 1.25rem;
 }
 
-.stack-large>*+* {
-    margin-top: 2.5rem;
+.stack-large>* {
+    margin-top: 2rem;
 }
 
 @media screen and (min-width: 550px) {
-    .stack-small>*+* {
+    .stack-small>* {
         margin-top: 1.4rem;
     }
 
@@ -256,22 +256,9 @@ body {
 }
 
 /* Todo item styles */
-.todo-list {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .todo-list>* {
-    flex: 1 1 50%;
     box-sizing: border-box;
-    align-items: stretch;
-}
-
-.todo-list::after {
-    content: "";
-    flex: 1 1 50%;
-    box-sizing: border-box;
-    align-items: stretch;
+    min-height: 140px;
 }
 
 .todo-text {
@@ -302,6 +289,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+@media screen and (min-width: 550px) {
+    .todo-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .todo-list>* {
+        min-height: 155px;
+    }
+
+    .todo-list>* {
+        flex: 1 1 50%;
+        align-items: stretch;
+    }
+
+    .todo-list::after {
+        content: "";
+        flex: 1 1 50%;
+        box-sizing: border-box;
+        align-items: stretch;
+    }
 }
 
 /* CHECKBOX STYLES */
@@ -384,4 +394,6 @@ body {
     flex: 1 1 30%;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    padding: 0 5px 0;
+    text-align: center;
 }

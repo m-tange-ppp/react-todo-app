@@ -6,7 +6,7 @@ function Form(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        if (name) {
+        if (name.length >= 1 && name.length <= 20) {
             props.addTask(name, deadline);
             setName("");
             setDeadline("")
@@ -28,6 +28,7 @@ function Form(props) {
                 autoComplete="off"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                placeholder="20文字以内でタスクを入力してね"
             />
             <input
                 type="date"
