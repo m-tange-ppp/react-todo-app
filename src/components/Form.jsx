@@ -30,17 +30,19 @@ function Form(props) {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="20文字以内でタスクを入力してね"
             />
-            <input
-                type="date"
-                id="new-todo-input"
-                className="input input__lg"
-                name="deadline"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-            />
-            <button type="submit" className="btn btn__primary btn__lg">
-                追加する
-            </button>
+            <div className="flex-container">
+                <input
+                    type="date"
+                    id="new-todo-date"
+                    className="input"
+                    name="deadline"
+                    value={deadline}
+                    onChange={(e) => setDeadline(e.target.value)}
+                />
+                <button type="submit" className="btn btn__primary btn__lg">
+                    追加する
+                </button>
+            </div>
         </form>
     );
 }

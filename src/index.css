@@ -71,16 +71,12 @@ body {
     margin: 0 auto;
     background: linear-gradient(to right, #FF7EE2, #E9FF97);
     color: #4d4d4d;
-}
-
-@media screen and (min-width: 620px) {
-    body {
-        font-size: 1.6rem;
-        line-height: 1.31579;
-    }
+    font-size: 1.6rem;
+    line-height: 1.31579;
 }
 
 /*END RESETS*/
+
 /* GLOBAL STYLES */
 .form-group>input[type="text"] {
     display: inline-block;
@@ -91,7 +87,6 @@ body {
     border: 0.2rem solid #4d4d4d;
     cursor: pointer;
     text-transform: capitalize;
-
 }
 
 .btn.toggle-btn {
@@ -167,16 +162,6 @@ body {
     margin-top: 2rem;
 }
 
-@media screen and (min-width: 550px) {
-    .stack-small>* {
-        margin-top: 1.4rem;
-    }
-
-    .stack-large>* {
-        margin-top: 2.8rem;
-    }
-}
-
 .stack-exception {
     margin-top: 1.2rem;
 }
@@ -227,6 +212,7 @@ body {
 .input__lg {
     padding: 1rem;
     border: 2px solid #4d4d4d;
+    margin-bottom: 1rem;
 }
 
 .input__lg:focus {
@@ -240,9 +226,6 @@ body {
     font-size: 1.9rem;
 }
 
-[class*="__lg"]:not(:last-child) {
-    margin-bottom: 1rem;
-}
 
 @media screen and (min-width: 620px) {
     [class*="__lg"] {
@@ -256,9 +239,14 @@ body {
 }
 
 /* Todo item styles */
+.todo-list {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
 .todo-list>* {
     box-sizing: border-box;
-    min-height: 140px;
 }
 
 .todo-text {
@@ -280,6 +268,7 @@ body {
         0 2px 4px 0 rgba(0, 0, 0, 0.2),
         0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
     height: 100%;
+    min-height: 155px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -293,7 +282,7 @@ body {
 
 @media screen and (min-width: 550px) {
     .todo-list {
-        display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
     }
 
@@ -302,13 +291,13 @@ body {
     }
 
     .todo-list>* {
-        flex: 1 1 50%;
+        flex: 1 1 45%;
         align-items: stretch;
     }
 
     .todo-list::after {
         content: "";
-        flex: 1 1 50%;
+        flex: 1 1 45%;
         box-sizing: border-box;
         align-items: stretch;
     }
@@ -396,4 +385,14 @@ body {
     border-radius: 10px;
     padding: 0 5px 0;
     text-align: center;
+}
+
+/* FORM STYLES */
+.flex-container {
+    display: flex;
+    gap: 10px;
+}
+
+#new-todo-date {
+    width: 100%;
 }
